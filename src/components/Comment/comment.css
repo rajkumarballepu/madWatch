@@ -1,0 +1,38 @@
+#comment {
+    margin: 0.5rem 0rem;
+    padding: 1rem;
+    width: 100%;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    position: relative;
+}
+
+#comment .container {
+    padding: 0;
+    margin-left: 1rem;
+}
+
+#comment .user {
+    display: flex;
+}
+
+.user-avatar {
+    margin-top: 5px;
+    width: 36px;
+    height: 36px;
+    background-color: #8b8989;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.timestamp-container {
+    /* margin-top: 10px; */
+    padding: 0.5rem;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    font-size: .7rem;
+}

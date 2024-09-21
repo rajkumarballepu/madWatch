@@ -1,0 +1,8 @@
+{
+    "appId": "io.ionic.madwatch",
+    "appName": "Mad Watch",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "build",
+    "cordova": {}
+  }

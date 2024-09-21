@@ -1,0 +1,16 @@
+#search-result-container {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background-color: #010101;
+    border-radius: 10px;
+    z-index: 100;
+    padding: 0rem 0rem .5rem 0rem;
+}
+
+.search-movie-name {
+    margin-top: .5rem;
+    padding: 0rem 1rem;
+    font-size: .8rem;
+    cursor: pointer;
+}
