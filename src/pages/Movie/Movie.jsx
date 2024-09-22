@@ -1,3 +1,4 @@
+import { host } from '../../utils'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import './movie.css'
@@ -15,14 +16,14 @@ function Movie() {
 
   useEffect(()=> {
     console.log(id);
-    axios.get(`https://awseb--awseb-m5dz9hwj7lzw-487510615.ap-south-1.elb.amazonaws.com/madwatch/api/movie/${id}`).then((res)=> {
+    axios.get(`${host}/madwatch/api/movie/${id}`).then((res)=> {
       console.log(res.data);
       setMovie(res.data);
     }).catch(()=> {
       console.warn("Movie server down...")
     })
 
-    axios.get(`https://awseb--awseb-m5dz9hwj7lzw-487510615.ap-south-1.elb.amazonaws.com/madwatch/api/comment/${id}`).then((res)=> {
+    axios.get(`${host}/madwatch/api/comment/${id}`).then((res)=> {
       console.log(res.data);
       setComments(res.data)
     }).catch(()=> {
@@ -35,7 +36,7 @@ function Movie() {
   const handleCommentPost = (event) => {
     event.preventDefault();
     console.log(comment)
-    axios.post('https://awseb--awseb-m5dz9hwj7lzw-487510615.ap-south-1.elb.amazonaws.com/madwatch/api/comment/', {...comment, movieId: movie.id}).then((res)=> {
+    axios.post(`${host}/madwatch/api/comment/`, {...comment, movieId: movie.id}).then((res)=> {
       console.log("Comment posted")
       console.log(res.data)
       setComments([res.data, ...comments])

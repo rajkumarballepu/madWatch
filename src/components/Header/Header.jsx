@@ -1,3 +1,4 @@
+import { host } from '../../utils'
 import React, { useEffect, useState } from 'react'
 import './style.css'
 import axios from 'axios';
@@ -14,7 +15,7 @@ function Header() {
   }
 
   useEffect(()=> {
-    axios.get("https://awseb--awseb-m5dz9hwj7lzw-487510615.ap-south-1.elb.amazonaws.com/madwatch/api/movie/all").then((res) => {
+    axios.get(`${host}/madwatch/api/movie/all`).then((res) => {
       const list = res.data;
       // console.log(list)
       setMovies(list);

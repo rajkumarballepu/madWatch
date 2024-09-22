@@ -1,3 +1,4 @@
+import { host } from '../../utils'
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import { Header, Carousel, Slider, Footer } from '../../components'
@@ -27,7 +28,7 @@ function Home() {
   }
 
   useEffect(() => {
-    axios.get("https://madwatchrest-env.eba-y4up4gpn.ap-south-1.elasticbeanstalk.com/madwatch/api/movie/all").then((res) => {
+    axios.get(`${host}/madwatch/api/movie/all`).then((res) => {
       const list = res.data;
       // setCategories(getCategories(list))
       setMovies(list);

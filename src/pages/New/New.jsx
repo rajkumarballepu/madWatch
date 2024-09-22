@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Header, Footer, SplitContainer } from '../../components'
 import './new.css'
 import axios from 'axios'
+import { host } from '../../utils'
 
 function New() {
   
   const [movies, setMovies] = useState(undefined);
   
   useEffect(()=> {
-    axios.get("https://awseb--awseb-m5dz9hwj7lzw-487510615.ap-south-1.elb.amazonaws.com/madwatch/api/movie/all").then((res) => {
+    axios.get(`${host}/madwatch/api/movie/all`).then((res) => {
       const list = res.data;
       // console.log(list.filter((_, index)=> index < 60))
       setMovies(list);
