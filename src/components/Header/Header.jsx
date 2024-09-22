@@ -14,7 +14,7 @@ function Header() {
   }
 
   useEffect(()=> {
-    axios.get("http://madwatchrest-env.eba-y4up4gpn.ap-south-1.elasticbeanstalk.com/madwatch/api/movie/all").then((res) => {
+    axios.get("https://madwatchrest-env.eba-y4up4gpn.ap-south-1.elasticbeanstalk.com/madwatch/api/movie/all").then((res) => {
       const list = res.data;
       // console.log(list)
       setMovies(list);

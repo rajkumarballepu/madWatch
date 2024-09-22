@@ -15,14 +15,14 @@ function Movie() {
 
   useEffect(()=> {
     console.log(id);
-    axios.get(`http://192.168.0.199:8080/madwatch/api/movie/${id}`).then((res)=> {
+    axios.get(`https://madwatchrest-env.eba-y4up4gpn.ap-south-1.elasticbeanstalk.com/madwatch/api/movie/${id}`).then((res)=> {
       console.log(res.data);
       setMovie(res.data);
     }).catch(()=> {
       console.warn("Movie server down...")
     })
 
-    axios.get(`http://192.168.0.199:8080/madwatch/api/comment/${id}`).then((res)=> {
+    axios.get(`https://madwatchrest-env.eba-y4up4gpn.ap-south-1.elasticbeanstalk.com/madwatch/api/comment/${id}`).then((res)=> {
       console.log(res.data);
       setComments(res.data)
     }).catch(()=> {
@@ -35,7 +35,7 @@ function Movie() {
   const handleCommentPost = (event) => {
     event.preventDefault();
     console.log(comment)
-    axios.post('http://madwatchrest-env.eba-y4up4gpn.ap-south-1.elasticbeanstalk.com/madwatch/api/comment/', {...comment, movieId: movie.id}).then((res)=> {
+    axios.post('https://madwatchrest-env.eba-y4up4gpn.ap-south-1.elasticbeanstalk.com/madwatch/api/comment/', {...comment, movieId: movie.id}).then((res)=> {
       console.log("Comment posted")
       console.log(res.data)
       setComments([res.data, ...comments])
