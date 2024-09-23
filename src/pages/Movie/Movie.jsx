@@ -36,6 +36,8 @@ function Movie() {
   const handleCommentPost = (event) => {
     event.preventDefault();
     console.log(comment)
+    let date = new Date();
+    console.log(date)
     axios.post(`${host}/madwatch/api/comment/`, {...comment, movieId: movie.id}).then((res)=> {
       console.log("Comment posted")
       console.log(res.data)
