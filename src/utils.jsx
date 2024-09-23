@@ -1,1 +1,1 @@
-export const host = "https://mad-server.onrender.com"
+export const host = "https://madserver.madcoder.xyz"

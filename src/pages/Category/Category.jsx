@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Footer, Header, SplitContainer } from '../../components'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { host } from '../../utils';
 
 function Category() {
   
@@ -9,7 +10,7 @@ function Category() {
   const { category } = useParams();
 
   useEffect(()=> {
-    axios.get(`http://192.168.0.199:8080/madwatch/api/movie/category/${category}`).then((res)=> {
+    axios.get(`${host}/${category}`).then((res)=> {
         console.log(res.data)
         setMovies(res.data)
     }).catch(()=> {
