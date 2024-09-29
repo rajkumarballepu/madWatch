@@ -64,7 +64,7 @@ function Episode() {
         <div className="container">
             <DetailCard item={show} />
             <div className="player">
-              <iframe src={episodes && episodes.length > 0 && episodes[parseFloat(searchParams.get('epNo')) - 1].episodeLink} width="100%" height="100%" allow='autoplay' frameborder="0"></iframe>
+              <iframe src={episodes && episodes.length > 0 && episodes[parseFloat(searchParams.get('epNo')) - 1].episodeLink} width="100%" height="100%" allow='autoplay' allowFullScreen='true' frameborder="0"></iframe>
             </div>
             <div className="episode-control">
                 <a href={`/show/${showId}/season/${seasonId}/watch/episode?epNo=${parseInt(searchParams.get('epNo')) - 1}`} className={`btn btn-primary ${searchParams.get('epNo') == 1 ? "disable" : ""}`}>Prev</a>

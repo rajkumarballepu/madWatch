@@ -78,3 +78,9 @@
     /* background-color: #ffffff3d; */
     height: 100px;
 }
+
+@media screen and (max-width: 760px) {
+    .episodes-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
