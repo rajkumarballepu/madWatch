@@ -1,4 +1,4 @@
-const host = 'http://madserver.madcoder.xyz/madwatch';
+const host = 'https://madserver.madcoder.xyz/madwatch';
 export const getCategoryMovies = `${host}/api/movie/category/`
 export const getAllShows = `${host}/api/show/all`
 export const getShow = `${host}/api/show/`

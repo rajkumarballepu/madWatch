@@ -8,7 +8,7 @@ import DetailCard from './../../components/DetailCard/DetailCard';
 import { getShow, postComment } from '../../utils/APIRoutes';
 
 function Episode() {
-  const [searchParams, set] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const { showId, seasonId } = useParams()
   const [seasons, setSeasons] = useState(undefined);
   const [episodes, setEpisodes ] = useState(undefined);
