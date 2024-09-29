@@ -1,12 +1,12 @@
 import React from 'react'
-import {Rating} from "react-simple-star-rating"
-import './slide.css'
+import { Rating } from 'react-simple-star-rating'
+import './showCard.css'
 
-function Slide({item}) {
+function ShowCard({item}) {
   return (
-    <a href={`/watch/movie/${item.id}`} className='slide'>
+    <a href={`/show/${item.id}`} className='slide'>
       <img src={item.avatar} alt={`${item.name}`} />
-      <p className="movei-name">
+      <p className="item-name">
         <span className="name">
           {item.name}
         </span>
@@ -18,4 +18,4 @@ function Slide({item}) {
   )
 }
 
-export default Slide
+export default ShowCard

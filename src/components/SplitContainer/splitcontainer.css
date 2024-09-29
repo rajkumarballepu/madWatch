@@ -1,13 +1,14 @@
 .split-page {
-    padding: 1rem;
     width: 100%;
 }
 
 .split-container {
-    display: grid;
+    margin: 1rem 0rem ;
     min-height: 500px;
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
+    align-content: start;
 }
 
 @media screen and (max-width: 900px) {

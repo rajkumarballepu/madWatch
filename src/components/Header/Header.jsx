@@ -1,27 +1,30 @@
-import { host } from '../../utils'
 import React, { useEffect, useState } from 'react'
 import './style.css'
 import axios from 'axios';
 import SearchResults from '../SearchResults/SearchResults';
+import { getAllMovies, getAllShows } from '../../utils/APIRoutes';
 
 function Header() {
 
-  const [movies, setMovies] = useState(undefined);
+  const [movies, setMovies] = useState([]);
+  const [shows, setShows] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   const handleChange = (event) => {
     setSearchText(event.target.value);
-    // console.log(movies.filter((movie)=>movie.name.toLowerCase().includes(event.target.value.toLowerCase())))
   }
 
   useEffect(()=> {
-    axios.get(`${host}/madwatch/api/movie/all`).then((res) => {
-      const list = res.data;
-      // console.log(list)
-      setMovies(list);
+    axios.get(`${getAllMovies}`).then((res) => {
+      setMovies(res.data)
+    }).then(()=> {
+      axios.get(`${getAllShows}`).then((res) => {
+        setShows(res.data)
+      })
     }).catch(()=> {
       console.log("Server not responding... ")
     })
+
   },[])
 
   return (
@@ -36,7 +39,14 @@ function Header() {
         <div className="search-bar">
           <input type="text" placeholder='Search your interest' className="search-input" value={searchText} onChange={handleChange}/>
         </div>
-        {movies && searchText.length > 0 && <SearchResults searchText={searchText} result={movies.filter((movie)=>movie.name.toLowerCase().includes(searchText.toLowerCase()))} />}
+        {
+          movies.length > 0 && shows.length > 0 && searchText.length > 0 && 
+          <SearchResults searchText={searchText} 
+            moviesResult={movies.filter((item)=>item.name.toLowerCase().includes(searchText.toLowerCase()))}
+            showsResult={shows.filter((item)=>item.name.toLowerCase().includes(searchText.toLowerCase()))} 
+          />
+        }
+
       </div>
     </div>
   )

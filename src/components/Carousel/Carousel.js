@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './carousel.css'
-import MovieDetailCard from '../MovieDetailCard/MovieDetailCard';
 
 function Carousel({items}) {
     const [count, setCount] = useState(0);
@@ -73,9 +72,10 @@ function Carousel({items}) {
               setTouches({...touches, end: event.changedTouches[0].clientX})
             }}>
                 {
-                    items && items.map((movie, index)=> {
+                    items && items.map((item, index)=> {
                         return <div key={index} className={`carousel-slider ${count === index ? 'active' : ''}`}>
-                          <MovieDetailCard movie={movie}/>
+                          {item}
+                          {/* Carousel */}
                         </div>
                     })
                 }
@@ -96,8 +96,7 @@ function Carousel({items}) {
                     })
                 }
             </div>
-        }
-          
+        } 
       </div>
     )
 }

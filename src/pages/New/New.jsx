@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { Header, Footer, SplitContainer } from '../../components'
+import { Header, Footer, SplitContainer, MovieCard } from '../../components'
 import './new.css'
 import axios from 'axios'
 import { host } from '../../utils'
+import { getAllMovies } from '../../utils/APIRoutes'
 
 function New() {
   
   const [movies, setMovies] = useState(undefined);
   
   useEffect(()=> {
-    axios.get(`${host}/madwatch/api/movie/all`).then((res) => {
+    axios.get(`${getAllMovies}`).then((res) => {
       const list = res.data;
       // console.log(list.filter((_, index)=> index < 60))
-      setMovies(list);
+      setMovies(list.filter((_, index)=> index < 60).map((movie)=> {
+        return <MovieCard item={movie} />
+      }));
     }).catch(()=> {
       console.warn("SErver not responding ")
     })

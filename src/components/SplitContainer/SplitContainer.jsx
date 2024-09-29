@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './splitcontainer.css'
-import { Slide } from "../index"
 
 function SplitContainer({array}) {
     const [arrayIndexes, setArrayIndexes] = useState({start: 0, end: 20-1})
@@ -15,18 +14,20 @@ function SplitContainer({array}) {
         <div className='split-container'>
           {
             activeArray && activeArray.map((item, index)=> {
-              return <Slide key={index+1} item={item} />            
+              return <div key={index + 1}>
+                {item}
+              </div>
             })
           }
         </div>
         <div className={array ? '' : 'd-none'}>
-          <button disabled={arrayIndexes.start <= 0} onClick={()=> {
+          <button className={`btn ${arrayIndexes.start <= 0 ? 'disable' : ''}`} disabled={arrayIndexes.start <= 0} onClick={()=> {
               setArrayIndexes({
                 start: arrayIndexes.start - 20,
                 end: arrayIndexes.end - 20
               });
             }}>Prev</button>
-            <button disabled={array && arrayIndexes.end > array.length} onClick={()=> {
+            <button className={`btn ${array && arrayIndexes.end > array.length ? 'disable' : ''}`} disabled={array && arrayIndexes.end > array.length} onClick={()=> {
               setArrayIndexes({
                 start: arrayIndexes.start + 20,
                 end: arrayIndexes.end + 20

@@ -1,0 +1,54 @@
+.slide {
+    display: block;
+    height: 200px;
+    background-color: #ffffff8c;
+    border: #f304cb27 solid 1px;
+    cursor: pointer;
+    aspect-ratio: 4/5;
+    transition: .5s;
+    align-self: center;
+    justify-self: center;
+    position: relative;
+}
+
+.slide:hover {
+    border: #f304cb solid 1px;
+}
+
+.slide img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.slide .movei-name {
+    width: 100%;
+    height: 100%;
+    color: #f304cb;
+    background-color: #0314229f;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: .5s;
+}
+
+.slide:hover .movei-name {
+    opacity: 1;
+}
+
+.item-name .name {
+    display: block;
+    height: fit-content;
+    text-align: center;
+}
+
+@media screen and (max-width: 760px) {
+}
+
+

@@ -1,0 +1,80 @@
+.episode-control {
+    margin-top: 1rem;
+}
+
+.episode-control .btn {
+    margin-right: 1rem;
+}
+
+.disable {
+    pointer-events: none;
+    cursor: pointer;
+    opacity: .5;
+}
+
+.season-options-container {
+    width: 200px;
+}
+
+#episode .seasons-container {
+    padding: 0.5rem 1rem;
+    margin: 1rem 0rem;
+    border: 1px solid #f304cb;
+    background-color: #f304cb3d;
+    color: #f9f9f9;
+    border-radius: none;
+    outline: none;
+}
+
+.seasons-container .season {
+    padding: 0.5rem 1rem;
+    border-radius: 0px;
+    color: #f304cb;
+    background-color: #ffffff3d;
+}
+
+.episodes-container {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 1rem;
+    background-color: #ffffff3d;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+}
+
+.grid-0 {
+    display: block;
+}
+
+.episode-link {
+    margin: 0.5rem 0rem;
+    padding: 1rem;
+    color: #fff;
+    text-align: center;
+    align-self: center;
+    background-color: #ffffff3d;
+    box-shadow: rgba(235, 52, 235, 0.25) 0px 30px 60px -12px inset;
+}
+
+.season-btn {
+    margin: 1rem 0rem;
+    padding: 0.5rem 1rem;
+    background-color: #ffffff3d;
+    border: #f304cb solid 1px;
+}
+
+.episode-link.active {
+
+    background-color: #f304cb3d;
+}
+
+.episode-comments {
+    margin: 1rem 0rem;
+}
+
+.comments-container {
+    margin-top: 1rem;
+    /* background-color: #ffffff3d; */
+    height: 100px;
+}

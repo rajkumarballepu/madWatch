@@ -21,7 +21,7 @@
     object-fit: cover;
 }
 
-.slide .movei-name {
+.slide .item-name {
     width: 100%;
     height: 100%;
     color: #f304cb;
@@ -38,11 +38,11 @@
     transition: .5s;
 }
 
-.slide:hover .movei-name {
+.slide:hover .item-name {
     opacity: 1;
 }
 
-.movei-name .name {
+.item-name .name {
     display: block;
     height: fit-content;
     text-align: center;

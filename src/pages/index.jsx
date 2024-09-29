@@ -4,3 +4,5 @@ export { default as Movies } from './Movies/Movies'
 export { default as New } from './New/New'
 export { default as Category } from './Category/Category'
 export { default as Shows} from "./Shows/Shows"
+export { default as Show } from './Show/Show'
+export { default as Episode } from './Episode/Episode'

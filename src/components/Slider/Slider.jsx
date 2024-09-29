@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './slider.css'
 import useWindowSize from '../useWindowSize';
-import Slide from '../Slide/Slide';
 
 function Slider({items, h2}) {
 
@@ -34,13 +33,15 @@ function Slider({items, h2}) {
       {
         h2 && <h2>{h2}</h2>
       }
-      <div className={`container d-flex p-0 ${items.length > 0 ? " ": "skeliton"}`}>
+      <div className={`container d-flex p-0 ${items.length > 0 ? " ": "skeliton"}`} style={{overflow: "hidden"}}>
         <span className={`arrow left ${scroll > 0 ? 'd-flex' : 'd-none'}`} onClick={handleScroll}>&lt;</span>
         <div className='slider-container' ref={sliderWrapper}>
           <div className="slider-wrapper" ref={sliderContainer}>
             {
               items && items.map((item, index)=> {
-                return <Slide item={item} alt={index + 1} key={index + 1} />
+                return <>
+                  {item}
+                </>;
               })
             }
           </div>

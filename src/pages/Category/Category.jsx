@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Footer, Header, SplitContainer } from '../../components'
+import { Footer, Header, MovieCard, SplitContainer } from '../../components'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { host } from '../../utils';
+import { getCategoryMovies } from '../../utils/APIRoutes';
 
 function Category() {
   
@@ -10,13 +10,15 @@ function Category() {
   const { category } = useParams();
 
   useEffect(()=> {
-    axios.get(`${host}/${category}`).then((res)=> {
+    axios.get(`${getCategoryMovies}${category}`).then((res)=> {
         console.log(res.data)
-        setMovies(res.data)
+        setMovies(res.data.sort((a, b) => b.rating - a.rating).map((movie) => {
+          return <MovieCard item={movie}/>
+        }))
     }).catch(()=> {
         console.log("Server not responding...")
     })
-  },[])
+  },[category])
 
   return (
     <div id='category-page' className='main-box-shadow'>

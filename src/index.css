@@ -16,7 +16,6 @@ body {
     margin: auto;
     width: 900px;
     margin-bottom: 3rem;
-    
 }
 
 .logo {
@@ -31,6 +30,7 @@ body {
 
 .container {
     padding: 1rem;
+    /* height: fit-content; */
     position: relative;
 }
 
@@ -48,7 +48,7 @@ body {
 }
 
 .p-0 {
-    padding: 0rem;
+    padding: 0rem !important;
 }
 
 .main-box-shadow {
@@ -77,6 +77,18 @@ body {
     position: relative;
     overflow: hidden;
     animation: fade-in-out 2s ease-in-out 0s infinite;
+}
+
+.btn {
+    margin: auto;
+    margin-right: 1rem;
+    padding: .5rem;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    background-color: #f304cb;
+    color: #f9f9f9;
+    cursor: pointer;
 }
 
 

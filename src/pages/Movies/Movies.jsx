@@ -1,9 +1,10 @@
-
 import './movies.css'
-import { Header, Footer, SplitContainer } from '../../components'
+import { Header, Footer, SplitContainer, MovieCard } from '../../components'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { host } from '../../utils'
+import { getAllMovies } from '../../utils/APIRoutes';
+
 
 
 function Movies() {
@@ -11,10 +12,11 @@ function Movies() {
   const [movies, setMovies] = useState(undefined);
   
   useEffect(()=> {
-    axios.get(`${host}/madwatch/api/movie/all`).then((res) => {
+    axios.get(`${getAllMovies}`).then((res) => {
       const list = res.data;
-      console.log(list.filter((_, index)=> index < 60))
-      setMovies(list);
+      setMovies(list.sort((a, b) => b.rating - a.rating).map((movie) => {
+        return <MovieCard item={movie}/>
+      }));
     }).catch(()=> {
       console.log("Server not responding..")
     })
@@ -23,8 +25,10 @@ function Movies() {
   return (
     <div id='movies-container' className='main-box-shadow'>
       <Header />
-      <h2 className={movies ? "" : 'skeliton'}>New Movies</h2>
-      <SplitContainer array={movies} />
+      <div className='container'>
+        <h2 className={movies ? "" : 'skeliton'}>Top Movies</h2>
+        <SplitContainer array={movies} />
+      </div>
       <Footer />
     </div>
   )

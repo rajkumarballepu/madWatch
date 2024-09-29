@@ -1,9 +1,9 @@
-import { host } from '../../utils'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import './movie.css'
-import { Header, Footer, Comment, MovieDetailCard } from '../../components'
+import { Header, Footer, Comment, DetailCard } from '../../components'
 import axios from 'axios';
+import { getMovie, postComment } from '../../utils/APIRoutes'
 
 function Movie() {
   const { id } = useParams();
@@ -16,14 +16,14 @@ function Movie() {
 
   useEffect(()=> {
     console.log(id);
-    axios.get(`${host}/madwatch/api/movie/${id}`).then((res)=> {
+    axios.get(`${getMovie}${id}`).then((res)=> {
       console.log(res.data);
       setMovie(res.data);
     }).catch(()=> {
       console.warn("Movie server down...")
     })
 
-    axios.get(`${host}/madwatch/api/comment/${id}`).then((res)=> {
+    axios.get(`${postComment}${id}`).then((res)=> {
       console.log(res.data);
       setComments(res.data)
     }).catch(()=> {
@@ -38,7 +38,7 @@ function Movie() {
     console.log(comment)
     let date = new Date();
     console.log(date)
-    axios.post(`${host}/madwatch/api/comment/`, {...comment, movieId: movie.id}).then((res)=> {
+    axios.post(`${postComment}`, {...comment, movieId: movie.id}).then((res)=> {
       console.log("Comment posted")
       console.log(res.data)
       setComments([res.data, ...comments])
@@ -71,7 +71,7 @@ function Movie() {
             }
             {movie && play && <iframe title='movie-player' width="100%" height="100%" allow='autoplay' src={movie.frameLink} allowFullScreen={true}></iframe>}
           </div>
-          <MovieDetailCard movie={movie}/>
+          <DetailCard item={movie}/>
           
           <div className="movie-comments">
             <div className="comments-container">
@@ -91,8 +91,9 @@ function Movie() {
                 <label htmlFor="">Comment</label>
                 <textarea id="" rows={10} value={comment.comment} required name='comment' onChange={handleChange}></textarea>
               </div>
-              <button type="submit">Post</button>
+              <button className='btn' type="submit">Post</button>
             </form>
+            
           </div>
         </div>
         <Footer />
