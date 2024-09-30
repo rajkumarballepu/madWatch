@@ -20,10 +20,10 @@ function Episode() {
   useEffect(()=> {
     console.log(searchParams.get('epId'))
     axios.get(getShow+showId).then((res)=> {
-        console.log(res.data.seasons)
+        console.log(res.data.seasons.find((season) => season.id == seasonId).episodes.sort((a, b) => a.episodeNo - b.episodeNo))
         setSeasons(res.data.seasons);
         setShow(res.data)
-        setEpisodes(res.data.seasons.find((season) => season.id == seasonId).episodes)
+        setEpisodes(res.data.seasons.find((season) => season.id == seasonId).episodes.sort((a, b) => a.episodeNo - b.episodeNo))
         setComments(res.data.seasons.find((season) => season.id == seasonId).episodes[parseInt(searchParams.get('epNo')) - 1].comments)
     }).catch((err)=> {
       console.log(err)
