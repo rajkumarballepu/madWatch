@@ -24,19 +24,21 @@ function Home() {
         return <DetailCard type={'movie'} item={item}/>
       })
       setMovies(list);
+    }).then(async () => {
+      axios.get(getAllShows).then(async (res)=> {
+        let c = res.data.filter((i, index) => index < 2).map((item)=> {
+          return <DetailCard type={'show'} item={item} />
+        })
+        cItems = [...cItems, ...c]
+        console.log(cItems)
+        setCarouselItems(cItems)
+        setShows(res.data)
+      })
     }).catch(()=> {
       console.warn("Server in home is not responding....")
     })
 
-    axios.get(getAllShows).then(async (res)=> {
-      let c = res.data.filter((i, index) => index < 2).map((item)=> {
-        return <DetailCard type={'show'} item={item} />
-      })
-      cItems = [...cItems, ...c]
-      console.log(cItems)
-      setCarouselItems(cItems)
-      setShows(res.data)
-    })
+    
 
   }, [])
 
