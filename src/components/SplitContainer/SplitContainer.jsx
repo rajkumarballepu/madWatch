@@ -21,7 +21,7 @@ function SplitContainer({array}) {
           }
         </div>
         <div className={array ? '' : 'd-none'}>
-          <button className={`btn ${arrayIndexes.start <= 0 ? 'disable' : ''}`} disabled={arrayIndexes.start <= 0} onClick={()=> {
+          <button className={`btn mr-1 ${arrayIndexes.start <= 0 ? 'disable' : ''}`} disabled={arrayIndexes.start <= 0} onClick={()=> {
               setArrayIndexes({
                 start: arrayIndexes.start - 20,
                 end: arrayIndexes.end - 20

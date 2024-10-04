@@ -18,13 +18,13 @@ function Episode() {
   const navigate = useNavigate();
 
   useEffect(()=> {
-    console.log(searchParams.get('epId'))
     axios.get(getShow+showId).then((res)=> {
-        console.log(res.data.seasons.find((season) => season.id == seasonId).episodes.sort((a, b) => a.episodeNo - b.episodeNo))
-        setSeasons(res.data.seasons);
-        setShow(res.data)
-        setEpisodes(res.data.seasons.find((season) => season.id == seasonId).episodes.sort((a, b) => a.episodeNo - b.episodeNo))
-        setComments(res.data.seasons.find((season) => season.id == seasonId).episodes[parseInt(searchParams.get('epNo')) - 1].comments)
+      console.log(res.data.seasons.find((season) => season.id == seasonId).episodes.sort((a, b) => a.episodeNo - b.episodeNo))
+      document.title = res.data.name + ' EP '+ searchParams.get('epNo') + ' - MAD WATCH'
+      setSeasons(res.data.seasons);
+      setShow(res.data)
+      setEpisodes(res.data.seasons.find((season) => season.id == seasonId).episodes.sort((a, b) => a.episodeNo - b.episodeNo))
+      setComments(res.data.seasons.find((season) => season.id == seasonId).episodes[parseInt(searchParams.get('epNo')) - 1].comments)
     }).catch((err)=> {
       console.log(err)
     })  
@@ -62,12 +62,14 @@ function Episode() {
     <div id='episode' className='main-box-shadow'>
         <Header />
         <div className="container">
-            <DetailCard item={show} />
+            <DetailCard type={'show'} item={show} />
+            <h3 className='title'>{show && show.name} - Episode {searchParams.get('epNo')}</h3>
             <div className="player">
               <iframe src={episodes && episodes.length > 0 && episodes[parseFloat(searchParams.get('epNo')) - 1].episodeLink} width="100%" height="100%" allow='autoplay' allowFullScreen='true' frameborder="0"></iframe>
             </div>
             <div className="episode-control">
                 <a href={`/show/${showId}/season/${seasonId}/watch/episode?epNo=${parseInt(searchParams.get('epNo')) - 1}`} className={`btn btn-primary ${searchParams.get('epNo') == 1 ? "disable" : ""}`}>Prev</a>
+                <p>Episode {searchParams.get('epNo')}</p>
                 <a href={`/show/${showId}/season/${seasonId}/watch/episode?epNo=${parseInt(searchParams.get('epNo')) + 1}`} className={`btn btn-primary me-2 ${episodes && episodes.length == searchParams.get('epNo') ? "disable" : ""} `}>Next</a>
             </div>
             <div className="season-options-container">

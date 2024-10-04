@@ -79,14 +79,14 @@ function Carousel({items}) {
                         </div>
                     })
                 }
-                <div className={`slide-btn-container ${items.length > 0 ? "" : "d-none"}`}>
-                  <span className='slide-btn' onClick={handlePrev} >
-                    &lt;
-                  </span>
-                  <span className='slide-btn' onClick={handlenNext}>
-                    &gt;
-                  </span>
-                </div>
+          </div>
+          <div className={`slide-btn-container ${items.length > 0 ? "" : "d-none"}`}>
+            <span className='slide-btn' onClick={handlePrev} >
+              &lt;
+            </span>
+            <span className='slide-btn' onClick={handlenNext}>
+              &gt;
+            </span>
           </div>
         {
             items && <div className='circles'>

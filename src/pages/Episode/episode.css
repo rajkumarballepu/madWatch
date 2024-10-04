@@ -1,9 +1,8 @@
 .episode-control {
     margin-top: 1rem;
-}
-
-.episode-control .btn {
-    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .disable {
@@ -14,6 +13,10 @@
 
 .season-options-container {
     width: 200px;
+}
+
+.title {
+    margin: 0.5rem 0rem;
 }
 
 #episode .seasons-container {

@@ -9,7 +9,7 @@ root.render(
   <React.StrictMode>
     
     <div className="logo">
-      <h2>Mad Watch</h2>
+      <h2>M<i class="logo-icon fa-solid fa-circle-play"></i>d Watch</h2>
       <img src='/logo-1.png' onClick={()=> [
         window.location.reload()
       ]} alt='logo' />

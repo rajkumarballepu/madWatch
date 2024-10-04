@@ -2,7 +2,6 @@ import './movies.css'
 import { Header, Footer, SplitContainer, MovieCard } from '../../components'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { host } from '../../utils'
 import { getAllMovies } from '../../utils/APIRoutes';
 
 
@@ -24,7 +23,7 @@ function Movies() {
 
   return (
     <div id='movies-container' className='main-box-shadow'>
-      <Header />
+      <Header active={'movies'}/>
       <div className='container'>
         <h2 className={movies ? "" : 'skeliton'}>Top Movies</h2>
         <SplitContainer array={movies} />

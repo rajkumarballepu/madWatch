@@ -1,11 +1,18 @@
 .detail-card {
     margin: 1rem 0rem;
-    background-color: #ffffff11;
+    /* background-color: #ffffff11; */
+    background-color: #f304cb11;
+    
     padding: 1rem;
     width: 100%;
     display: grid;
     grid-template: auto auto/180px 1fr 1fr;
     gap: 1rem;
+}
+
+.detail-card .slide {
+    width: 100%;
+    height: 100%;
 }
 
 .item-avatar {
@@ -27,6 +34,7 @@
 
 .item-meta-details {
     grid-column: span 2;
+    position: relative;
 }
 
 
@@ -48,7 +56,9 @@
 }
 
 .item-category-contianer {
+    margin-top: 1rem;
     width: 100%;
+    height: fit-content;
     display: flex;
     overflow: scroll;
 }
@@ -58,9 +68,7 @@
     padding: 0.5rem .8rem;
     margin-right: .5rem;
     text-wrap: nowrap;
-    color: #f9f9f9;
     font-size: .9rem;
-    border: 1px #f304cb solid;
     border-radius: 20px;
 }
 
@@ -79,5 +87,10 @@
 
     #carousel .item-description {
         display: none;
+    }
+
+    
+    #carousel .item-name {
+        font-size: 1rem;
     }
 }

@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Header, Footer, SplitContainer, MovieCard } from '../../components'
 import './new.css'
 import axios from 'axios'
-import { host } from '../../utils'
+
+
+
 import { getAllMovies } from '../../utils/APIRoutes'
 
 function New() {
@@ -23,7 +25,7 @@ function New() {
 
   return (
     <div id='new' className={`main-box-shadow`}>
-      <Header />
+      <Header active={'new'} />
       <div className="container">
         <h2 className={movies ? "" : 'skeliton'}>New Movies</h2>
         <SplitContainer array={movies} />

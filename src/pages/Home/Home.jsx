@@ -1,54 +1,53 @@
-import { host } from '../../utils'
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import { Header, Carousel, Slider, Footer, DetailCard, MovieCard } from '../../components'
+import { Header, Carousel, Slider, Footer, DetailCard, MovieCard, ShowCard } from '../../components'
 import axios from 'axios'
 import './style.css'
-import { getAllMovies } from '../../utils/APIRoutes'
+import { getAllMovies, getAllShows } from '../../utils/APIRoutes'
 
 function Home() {
 
   const [movies, setMovies] = useState([]);
+  const [shows, setShows] = useState([]);
   const [carouselItems, setCarouselItems] = useState([]);
-  const [categories, setCategories] = useState([
+  const [categories] = useState([
     "Action",
     "Thriller",
     "Romantic",
-    "Family",
     "Drama",
-    "Comedy",
-    "Crime",
   ]);
 
-  function getCategories(moviesList) {
-    let str = "";
-    moviesList.forEach((item)=> {
-      str += item.categories.replaceAll(" ", "") + ",";
-    })
-    console.log()
-    return [...new Set(str.substring(0, str.length-1).split(","))];
-  }
-
   useEffect(() => {
-    axios.get(getAllMovies).then((res) => {
+    var cItems = [];
+    axios.get(getAllMovies).then(async (res) => {
       const list = res.data;
-      console.log(list.filter((_, index)=> index < 4));
-      let cItems = list.filter((_, index)=> index < 4).map((item)=> {
-        return <DetailCard item={item}/>
+      cItems = list.filter((_, index)=> index < 2).map((item)=> {
+        return <DetailCard type={'movie'} item={item}/>
       })
-      console.log(cItems)
-      setCarouselItems(cItems)
       setMovies(list);
     }).catch(()=> {
       console.warn("Server in home is not responding....")
     })
 
+    axios.get(getAllShows).then(async (res)=> {
+      let c = res.data.filter((i, index) => index < 2).map((item)=> {
+        return <DetailCard type={'show'} item={item} />
+      })
+      cItems = [...cItems, ...c]
+      console.log(cItems)
+      setCarouselItems(cItems)
+      setShows(res.data)
+    })
+
   }, [])
+
+  useEffect(()=> {
+    
+  },[])
 
   return (
     <>
       <div id='home' className='main-box-shadow'>
-        <Header />
+        <Header active={'home'}/>
         <div className="container">
           <Carousel items={carouselItems}/>
           <h2 className={movies.length === 0 ? "skeliton" : ""}>Recently Added</h2>
@@ -59,6 +58,9 @@ function Home() {
           <Slider items={movies.filter((_, index)=> index < 10).sort((a, b) => b.rating - a.rating).map((item)=> {
             return <MovieCard item={item} />
           })}></Slider>
+          <Slider h2={'Anime Shows'} items={shows.filter((show)=> show.categories.toLowerCase().includes('anime')).map((show, index)=> {
+            return <ShowCard key={index + 1} item={show} />
+          })}/>
           {
             categories && categories.map((category, index) => {
               return <Slider key={index + 1} h2={category} items={movies.filter((movie, index)=> movie.categories.includes(category)).sort((a, b) => b.rating - a.rating).map((item)=> {

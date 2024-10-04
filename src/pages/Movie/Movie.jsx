@@ -18,6 +18,7 @@ function Movie() {
     console.log(id);
     axios.get(`${getMovie}${id}`).then((res)=> {
       console.log(res.data);
+      document.title = res.data.name + " - MAD WATCH"
       setMovie(res.data);
     }).catch(()=> {
       console.warn("Movie server down...")
@@ -61,6 +62,7 @@ function Movie() {
     <div id='movie' className='main-box-shadow'>
         <Header/>
         <div className="container">
+          <DetailCard item={movie} type={'movie'} />
           <div className={`player ${movie ? "" : "skeliton"}`} >
             {!play && <span className="play-icon" onClick={()=> {
                 setPlay(true);
@@ -71,7 +73,6 @@ function Movie() {
             }
             {movie && play && <iframe title='movie-player' width="100%" height="100%" allow='autoplay' src={movie.frameLink} allowFullScreen={true}></iframe>}
           </div>
-          <DetailCard item={movie}/>
           
           <div className="movie-comments">
             <div className="comments-container">

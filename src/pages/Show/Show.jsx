@@ -1,14 +1,12 @@
-import React, { act, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './show.css'
-import { Footer, Header, DetailCard, Slider } from '../../components'
+import { Footer, Header, DetailCard, SeasonsContainer } from '../../components'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { host } from '../../utils';
 import { getShow } from '../../utils/APIRoutes';
 
 function Show() {
 
-  const arr = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
   const [active, setActive] = useState(0);
   const { id } = useParams();
   const [show, setShow] = useState(undefined);
@@ -27,19 +25,11 @@ function Show() {
     <div id='show' className='main-box-shadow'>
       <Header />
       <div className="container">
-        <DetailCard item={show} />
+        <DetailCard item={show} type={'show'} />
         <div className="seasons-container">
           {
             seasons && seasons.length > 0 ? seasons.map((season, index) => {
-              return <details key={index + 1} className='season-container'>
-                <summary>{season.seasonName}</summary>
-                {season.episodes && season.episodes == 0 ? <p className="episode-container">No episodes available</p> : season.episodes.sort((a, b) => a.episodeNo - b.episodeNo).map((ep, index) => {
-                  return <p key={index + 1} className="episode-container">
-                    <span className="episode-text">Episode {ep.episodeNo}</span>
-                    <a href={`/show/${id}/season/${season.id}/watch/episode?epNo=${ep.episodeNo}`} className='btn main-box-shadow'><i className="fa-solid fa-play"></i> Watch Now </a>
-                  </p>
-                }) }
-              </details>
+              return <SeasonsContainer key={index + 1} id={id} season={season} />
             }) : <p className="p-1">No Seasons are available</p>
           }
         </div>

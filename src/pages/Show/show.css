@@ -2,30 +2,3 @@
     margin-top: 1rem;
     width: 100%;
 }
-
-details > summary {
-    list-style: none;
-}
-
-details > summary::-webkit-details-marker {
-    display: none;
-}
-
-.season-container {
-    margin: .5rem 0rem;
-    padding: 1rem;
-    background-color: #ffffff11 ;
-    user-select: none;
-    cursor: pointer;
-    position: relative;
-}
-
-.episode-container {
-    margin: .5rem 0rem;
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
-    width: 100%;
-    background-color: #ffffff11 ;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}

@@ -1,0 +1,47 @@
+.season-detail-container {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f304cb11;
+    display: grid;
+    grid-template-rows: auto 0fr;
+    transition: grid-template-rows .5s;
+}
+
+.season-detail-container .season-name {
+    position: relative;
+}
+
+.season-detail-container.open {
+    grid-template-rows: auto 1fr;
+}
+
+.season-episodes-container {
+    /* padding-top: 1rem; */
+    overflow: hidden;
+    transition:  .5s;
+}
+
+.expand-btn {
+    display: inline-block;
+    font-size: 2rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    transform: translateY(25%) rotate(90deg) ;
+}
+
+.season-detail-container.open .expand-btn {
+    transform: translateY(25%) rotate(-90deg) ;
+}
+
+
+.episode-container {
+    margin: .5rem 0rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    width: 100%;
+    background-color: #ffffff11 ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

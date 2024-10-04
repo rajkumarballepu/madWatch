@@ -4,7 +4,7 @@ import axios from 'axios';
 import SearchResults from '../SearchResults/SearchResults';
 import { getAllMovies, getAllShows } from '../../utils/APIRoutes';
 
-function Header() {
+function Header({active}) {
 
   const [movies, setMovies] = useState([]);
   const [shows, setShows] = useState([]);
@@ -27,14 +27,16 @@ function Header() {
 
   },[])
 
+  
+
   return (
     <div id='header'>
       <div className="nav-bar">
         <ul className="navbar-container">
-          <li className="navbar-item"><a href="/" className="navbar-link"><i className="link-icon fa-solid fa-house"></i><p className='link-title'>Home</p></a></li>
-          <li className="navbar-item"><a href="/new" className="navbar-link"><i className="link-icon fa-solid fa-fire"></i><p className='link-title'>New</p></a></li>
-          <li className="navbar-item"><a href="/movies" className="navbar-link"><i className="link-icon fa-solid fa-film"></i><p className='link-title'>Movies</p></a></li>
-          <li className="navbar-item"><a href="/shows" className="navbar-link"><i className="link-icon fa-brands fa-youtube"></i><p className='link-title'>Shows</p></a></li>
+          <li className="navbar-item"><a href="/" className={`navbar-link ${active === 'home' ? "active" : ""}`}><i className="link-icon fa-solid fa-house"></i><p className='link-title'>Home</p></a></li>
+          <li className="navbar-item"><a href="/new" className={`navbar-link ${active === 'new' ? "active" : ""}`}><i className="link-icon fa-solid fa-fire"></i><p className='link-title'>New</p></a></li>
+          <li className="navbar-item"><a href="/movies" className={`navbar-link ${active === 'movies' ? "active" : ""}`}><i className="link-icon fa-solid fa-film"></i><p className='link-title'>Movies</p></a></li>
+          <li className="navbar-item"><a href="/shows" className={`navbar-link ${active === 'shows' ? "active" : ""}`}><i className="link-icon fa-brands fa-youtube"></i><p className='link-title'>Shows</p></a></li>
         </ul>
         <div className="search-bar">
           <input type="text" placeholder='Search your interest' className="search-input" value={searchText} onChange={handleChange}/>
