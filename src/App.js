@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import { Category, Episode, Home, Movies, New, Show, Shows, SingleMovie } from './pages'
 import './App.css'
