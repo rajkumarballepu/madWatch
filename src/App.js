@@ -7,6 +7,13 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+  useEffect(()=> {
+    const adElements = document.querySelectorAll('.ad');
+    adElements.forEach(element => {
+      element.style.display = 'none';
+    });
+  })
+
   return (
     <BrowserRouter>
       <Routes>
